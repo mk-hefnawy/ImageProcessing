@@ -20,6 +20,7 @@ class Utils:
     def counter_zero(self):
         self.counter = 0
 
+    """ By Mohamed Khaled Rashad"""
     # show a message to the user
     def show_message(self, message):
         msg = QMessageBox()
@@ -30,6 +31,7 @@ class Utils:
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         msg.exec_()
 
+    """ By Mohamed Amr Ahmed Taha"""
     # convert the input image to text using tesseract
     def convert(self, img):
         path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
@@ -37,13 +39,14 @@ class Utils:
         text = pytesseract.image_to_string(img)
         return text
 
+    """ By Mohamed Hussien Mostafa"""
     # translate the text
     def translate(self, converted_text, dest_language):
         trans = Translator()
         t = trans.translate(converted_text, dest=dest_language)
-        print(googletrans.LANGUAGES)
         return t.text
 
+    """ By Mohamed Amr Mohamed Hassan"""
     # spell the text
     def spell(self, text, dest_language):
         myobj = gTTS(text=text, lang=dest_language, slow=False)
@@ -53,6 +56,7 @@ class Utils:
         playsound("test.mp3")
         os.remove("test.mp3")
 
+    """ By Mohamed Emad Mahmoud Abd Al Hamid"""
     # increase the brightness of the image
     def increase_brightness(self, img_path, value=20):
         img = cv2.imread(img_path)
@@ -66,40 +70,44 @@ class Utils:
         final_hsv = cv2.merge((h, s, v))
         image = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2BGR)  # was img
         #  writing the image to disk
-        path = "D:\\4thComputer\\2ndTerm\\Image\\Project\\A\\" + str(self.counter) + ".jpg"
+        path = "A\\" + str(self.counter) + ".jpg"
         cv2.imwrite(path, image)
         self.counter += 1
         return path
 
+    """ By Mohamed Emad Mahmoud Abd Al Hamid"""
     # fill the gaps of the image
     def close_gaps(self, img_path, iterations=1):
         img = cv2.imread(img_path)
         square_kernel = np.ones(((2 * iterations) + 1, (2 * iterations) + 1), np.uint8)
         out = cv2.dilate(cv2.erode(img, square_kernel, iterations=1), square_kernel, iterations=1)
-        path = "D:\\4thComputer\\2ndTerm\\Image\\Project\\A\\" + str(self.counter) + ".jpg"
+        path = "A\\" + str(self.counter) + ".jpg"
         cv2.imwrite(path, out)
         self.counter += 1
         return path
 
+    """ By Mohamed Emad Mahmoud Abd Al Hamid"""
     # unglue connected parts of the image
     def open_gaps(self, img_path, iterations=1):
         img = cv2.imread(img_path)
         square_kernel = np.ones(((2 * iterations) + 1, (2 * iterations) + 1), np.uint8)
         out = cv2.erode(cv2.dilate(img, square_kernel, iterations=1), square_kernel, iterations=1)
-        path = "D:\\4thComputer\\2ndTerm\\Image\\Project\\A\\" + str(self.counter) + ".jpg"
+        path = "A\\" + str(self.counter) + ".jpg"
         cv2.imwrite(path, out)
         self.counter += 1
         return path
 
+    """ By Mohamed Emad Mahmoud Abd Al Hamid"""
     # remove noise from the image
     def remove_noise(self, img_path):
         img = cv2.imread(img_path)
         img = cv2.medianBlur(img, 3)  # 3
-        path = "D:\\4thComputer\\2ndTerm\\Image\\Project\\A\\" + str(self.counter) + ".jpg"
+        path = "A\\" + str(self.counter) + ".jpg"
         cv2.imwrite(path, img)
         self.counter += 1
         return path
 
+    """ By Mohamed Khaled Rashad"""
     # convert numpy array representation of an image to QImage
     def numpyQImage(self, image):
         qImg = QtGui.QImage()

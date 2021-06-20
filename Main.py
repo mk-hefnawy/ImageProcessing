@@ -38,8 +38,8 @@ class Window(QMainWindow):
         # setting title
         self.setWindowTitle("Reading Made Easy")
         # setting icon
-        icon = QIcon("D:\\4thComputer\\2ndTerm\\Image\\Project\\icon1.png")
-        self.setWindowIcon(icon)
+        #icon = QIcon("D:\\4thComputer\\2ndTerm\\Image\\Project\\icon1.png")
+        #self.setWindowIcon(icon)
 
         self.image = None
         # setting geometry
@@ -52,6 +52,7 @@ class Window(QMainWindow):
         self.show()
 
     # method for components
+    """ By Mohamed Khaled Rashad"""
     def ui_components(self):
         # label of the line edit
         path_label = QLabel("Image Path", self)
@@ -121,13 +122,14 @@ class Window(QMainWindow):
         self.spell_translated_btn = QPushButton("Spell", self)
         self.spell_translated_btn.setVisible(False)
 
+    """ By Mohamed Khaled Rashad"""
     # call back method of load button
     def on_load_clicked(self):
         self.counter = 0
         self.counter_load += 1
         self.utils.counter_zero()
-        shutil.rmtree('D:\\4thComputer\\2ndTerm\\Image\\Project\\A\\')
-        path = os.path.join('D:\\4thComputer\\2ndTerm\\Image\\Project\\', 'A')
+        shutil.rmtree('A\\')
+        path = os.path.join('', 'A')
         os.mkdir(path)
 
         self.label.setVisible(False)
@@ -153,6 +155,7 @@ class Window(QMainWindow):
             message = " "
             self.utils.show_message(message)
 
+    """ By Mohamed Khaled Rashad"""
     # display the preview of the input image
     def display_image(self, path):
         self.lb.setVisible(True)
@@ -196,6 +199,7 @@ class Window(QMainWindow):
         self.remove_noise.setVisible(True)
         self.remove_noise.clicked.connect(lambda: self.on_remove_noise_btn_clicked())
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of convert button
     def on_convert_btn_clicked(self):
         if self.counter > 0:
@@ -215,6 +219,7 @@ class Window(QMainWindow):
 
         self.convert_clicked += 1
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of increase brightness button
     def on_increase_brightness_btn_clicked(self):
         if self.counter > 0:
@@ -229,6 +234,7 @@ class Window(QMainWindow):
 
         self.counter += 1
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of fill gaps button
     def on_fill_gaps_btn_clicked(self):
         if self.counter > 0:
@@ -243,6 +249,7 @@ class Window(QMainWindow):
 
         self.counter += 1
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of unglue button
     def on_unglue_btn_clicked(self):
         if self.counter > 0:
@@ -257,6 +264,7 @@ class Window(QMainWindow):
 
         self.counter += 1
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of remove noise button
     def on_remove_noise_btn_clicked(self):
         if self.counter > 0:
@@ -269,6 +277,7 @@ class Window(QMainWindow):
         self.updated_path = new_path
         self.counter += 1
 
+    """ By Mohamed Khaled Rashad"""
     # show translate and spell (converted text) button
     def prepare_translate_and_spell(self):
         self.translate_btn.setGeometry(1200, 220, 100, 30)
@@ -281,10 +290,11 @@ class Window(QMainWindow):
         dest_language = 'en'
         self.spell_btn.clicked.connect(lambda: self.on_spell_clicked(dest_language))
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of translate button
     def on_translate_clicked(self):
         dest_language = 'ar'
-        self.translated_text = self.utils.translate(self.converted_text, dest_language)
+        self.translated_text = self.utils.translate(self.converted_text[:-1], dest_language)
         self.translated_text_view.setGeometry(1200, 280, 500, 100)
 
         self.translated_text_view.setVisible(True)
@@ -297,10 +307,12 @@ class Window(QMainWindow):
 
         self.translated_clicked += 1
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of spell (converted text) button
     def on_spell_clicked(self, dest_language):
         self.utils.spell(self.converted_text, dest_language)
 
+    """ By Mohamed Khaled Rashad"""
     # show spell (translated text) button
     def prepare_spell_translated(self):
 
@@ -310,6 +322,7 @@ class Window(QMainWindow):
         self.spell_translated_btn.clicked.connect(
             lambda: self.on_spell_translated_clicked(dest_language))
 
+    """ By Mohamed Khaled Rashad"""
     # call back function of spell (translated text) button
     def on_spell_translated_clicked(self, dest_language):
         self.utils.spell(self.translated_text, dest_language)
