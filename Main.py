@@ -293,6 +293,7 @@ class Window(QMainWindow):
     """ By Mohamed Khaled Rashad"""
     # call back function of translate button
     def on_translate_clicked(self):
+        print("Main " + self.converted_text[:-1])
         dest_language = 'ar'
         self.translated_text = self.utils.translate(self.converted_text[:-1], dest_language)
         self.translated_text_view.setGeometry(1200, 280, 500, 100)

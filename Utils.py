@@ -1,4 +1,3 @@
-import googletrans
 import numpy as np
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMessageBox
@@ -42,6 +41,7 @@ class Utils:
     """ By Mohamed Hussien Mostafa"""
     # translate the text
     def translate(self, converted_text, dest_language):
+        print("Utils " + converted_text)
         trans = Translator()
         t = trans.translate(converted_text, dest=dest_language)
         return t.text
