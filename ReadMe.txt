@@ -5,6 +5,7 @@ pip install opencv-python
 pip install gTTS
 pip install playsound
 pip install pytesseract
+pip install googletrans==3.1.0a0
 
 *Important Notes: 
 1) You have to have a folder called 'A' in the same directory of the 
